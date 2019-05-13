@@ -26,16 +26,19 @@ http://vmankongvanichkul.greenriverdev.com/it328/
 
     <h6><label>Midterm Survey</label></h6>
 
-    <label>Name: <input type="text" name="name"> </label>
-    <p>Check all that apply: </p>
-    <repeat group="{{ @checkboxes }}" value="{{ @boxOptions }}">
-        <div class="form-check form-check-inline col">
-            <label class="form-check-label"><input type="checkbox" class="form-check-input"
-                                                   name="checkboxes[]" value="{{ @boxOptions }}">
-                {{ @boxOptions }}</label><br>
-        </div>
-    </repeat>
+    <form method="post" action="">
+        <label>Name: <input type="text" name="name"> </label>
+        <p>Check all that apply: </p>
+        <repeat group="{{ @checkboxes }}" value="{{ @boxOptions }}">
+            <div class="form-check form-check-inline col">
+                <label class="form-check-label"><input type="checkbox" class="form-check-input"
+                                                       name="checkboxes[]" value="{{ @boxOptions }}">
+                    {{ @boxOptions }}</label><br>
+            </div>
+        </repeat>
 
+        <button type="submit">Submit</button>
+    </form>
 
 </div>
 
