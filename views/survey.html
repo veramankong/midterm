@@ -14,9 +14,6 @@ http://vmankongvanichkul.greenriverdev.com/it328/
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <!--Custom CSS-->
-    <link rel="stylesheet" href="styles.css">
-
     <title>Document</title>
 </head>
 <body>
@@ -26,17 +23,26 @@ http://vmankongvanichkul.greenriverdev.com/it328/
 
     <h6><label>Midterm Survey</label></h6>
 
-    <form method="post" action="">
-        <label>Name: <input type="text" name="name"> </label>
+    <form method="post" action="result">
+        <label>Name:
+            <check if="{{ isset(@errors['name']) && !isset(@SESSION.name) }}">
+                <em class="text-danger">{{ @errors['name'] }}</em>
+            </check><
+            input type="text" name="name" required> </label>
         <p>Check all that apply: </p>
+        <check if="{{ isset(@errors['checkboxes']) }}">
+            <em class="text-danger">{{ @errors['checkboxes'] }}</em>
+        </check>
         <repeat group="{{ @checkboxes }}" value="{{ @boxOptions }}">
             <div class="form-check form-check-inline col">
                 <label class="form-check-label"><input type="checkbox" class="form-check-input"
-                                                       name="checkboxes[]" value="{{ @boxOptions }}">
-                    {{ @boxOptions }}</label><br>
+                                                       name="checkboxes[]" value="{{ @boxOptions }}" required>
+                    <check if="{{ !empty(@checkboxes) && in_array(@boxOptions, @checkboxes) }}">
+                        checked="checked"
+                    </check>{{ @boxOptions }}</label><br>
             </div>
         </repeat>
-
+        <br>
         <button type="submit">Submit</button>
     </form>
 
