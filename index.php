@@ -10,7 +10,7 @@ require_once("vendor/autoload.php");
 $f3 = Base::instance();
 
 //set array
-$f3-set('checkboxes', array('This midterm is easy', 'I like midterms', 'Today is Monday'));
+$f3->set('checkboxes', array('This midterm is easy', 'I like midterms', 'Today is Monday'));
 
 //turn on fat-free error reporting
 $f3->set('DEBUG', 3);
@@ -20,11 +20,7 @@ $f3->route('GET /', function() {
 
     //display a view
     $view = new Template();
-    echo '<div class="container shadow-lg mt-5 p-5">
-        <h1>Midterm Survey</h1>
-
-        <a class="btn" href="survey">Take my Midterm Survey</a>
-    </div>';
+    echo $view->render('views/home.html');
 });
 
 //define a survey route
