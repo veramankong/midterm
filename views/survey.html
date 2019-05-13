@@ -32,13 +32,15 @@ http://vmankongvanichkul.greenriverdev.com/it328/
         <check if="{{ isset(@errors['checkboxes']) }}">
             <em class="text-danger">{{ @errors['checkboxes'] }}</em>
         </check>
+
         <repeat group="{{ @checkboxes }}" value="{{ @boxOptions }}">
             <div class="form-check form-check-inline col">
                 <label class="form-check-label"><input type="checkbox" class="form-check-input"
-                                                       name="checkboxes[]" value="{{ @boxOptions }}">
-                    <check if="{{ !empty(@checkboxes) && in_array(@boxOptions, @checkboxes) }}">
+                                                       name="checkboxes[]" value="{{ @boxOptions }}"
+                    <check if="{{ !empty(@checkboxes) && in_array(@boxOptions, @indoor) }}">
                         checked="checked"
-                    </check>{{ @boxOptions }}</label><br>
+                    </check>>
+                    {{ @indoorOptions }}</label><br>
             </div>
         </repeat>
         <br>
